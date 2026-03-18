@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "paths": {
+      "@scui/core": ["../../packages/core/src"],
+      "@scui/react": ["../../packages/react/src"],
+      "@scui/adapters": ["../../packages/adapters/src"],
+      "@scui/zod": ["../../packages/zod/src"]
+    }
+  },
+  "include": ["src"]
+}
