@@ -35,7 +35,7 @@ Define a catalog:
 import { z } from "zod";
 import { defineCatalog } from "@scui/zod";
 
-function MetricCard(props: { label: string; value: string }) {
+function MetricCard(props: { label: string; value: number }) {
   return (
     <div>
       <div>{props.label}</div>
@@ -49,8 +49,7 @@ export const catalog = defineCatalog({
     component: MetricCard,
     schema: z.object({
       label: z.string(),
-      // accept either encoding and normalize to a string
-      value: z.union([z.string(), z.number()]).transform((v) => String(v)),
+      value: z.number(),
     }),
     description: "Displays a metric",
   },
@@ -80,7 +79,9 @@ export function App() {
 }
 ```
 
-Your `/api/scui` should return:
+`/api/scui` is not required — it’s an example **recommended** server-side endpoint used to keep LLM/API keys off the client and centralize auth, rate-limiting, logging, and retries. In production, model calls should typically happen server-side.
+
+If you use a fetch adapter like above, your server endpoint should return:
 
 ```json
 {

@@ -21,7 +21,7 @@ export const catalog = defineCatalog({
     component: MetricCard,
     schema: z.object({
       label: z.string(),
-      value: z.union([z.string(), z.number()]).transform((v) => String(v)),
+      value: z.number(),
     }),
     description: "Displays a metric",
   },
