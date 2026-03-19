@@ -1,4 +1,4 @@
-# @scui/core
+# @scui-llm/core
 
 ## 0.0.1
 

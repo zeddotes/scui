@@ -1,4 +1,4 @@
-import type { SCUIModelRequest, SCUIModelResponse } from "@scui/core";
+import type { SCUIModelRequest, SCUIModelResponse } from "@scui-llm/core";
 
 export type FetchLike = (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
 

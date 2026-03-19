@@ -9,10 +9,10 @@
     "skipLibCheck": true,
     "noEmit": true,
     "paths": {
-      "@scui/core": ["../../packages/core/src"],
-      "@scui/react": ["../../packages/react/src"],
-      "@scui/adapters": ["../../packages/adapters/src"],
-      "@scui/zod": ["../../packages/zod/src"]
+      "@scui-llm/core": ["../../packages/core/src"],
+      "@scui-llm/react": ["../../packages/react/src"],
+      "@scui-llm/adapters": ["../../packages/adapters/src"],
+      "@scui-llm/zod": ["../../packages/zod/src"]
     }
   },
   "include": ["src"]

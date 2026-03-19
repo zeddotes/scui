@@ -1,11 +1,11 @@
 import React from "react";
 import { describe, it, expect } from "vitest";
 import { z } from "zod";
-import type { SCUIAdapter, SCUIModelRequest, SCUIModelResponse, SCUIResponse } from "@scui/core";
-import { defineCatalog, type Catalog } from "@scui/zod";
+import type { SCUIAdapter, SCUIModelRequest, SCUIModelResponse, SCUIResponse } from "@scui-llm/core";
+import { defineCatalog, type Catalog } from "@scui-llm/zod";
 import { renderBlock } from "./render";
 
-describe("@scui/react render", () => {
+describe("@scui-llm/react render", () => {
   it("skips unknown components", () => {
     const catalog = defineCatalog({}) as unknown as Catalog;
     const node = renderBlock({ component: "Missing", props: {} }, catalog);
@@ -29,7 +29,7 @@ describe("@scui/react render", () => {
   });
 });
 
-describe("@scui/react hook", () => {
+describe("@scui-llm/react hook", () => {
   it("adapter can return blocks", async () => {
     const adapter: SCUIAdapter = {
       async generate<T = unknown>(input: SCUIModelRequest): Promise<SCUIModelResponse<T>> {

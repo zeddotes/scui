@@ -1,4 +1,4 @@
-import type { SCUIAdapter, SCUIModelRequest, SCUIModelResponse } from "@scui/core";
+import type { SCUIAdapter, SCUIModelRequest, SCUIModelResponse } from "@scui-llm/core";
 import type { FetchLike, RequestMapper, ResponseMapper } from "./types";
 
 export type CreateFetchAdapterOptions<T = unknown> = {

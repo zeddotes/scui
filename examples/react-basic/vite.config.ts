@@ -6,10 +6,10 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@scui/core": path.resolve(__dirname, "../../packages/core/src"),
-      "@scui/react": path.resolve(__dirname, "../../packages/react/src"),
-      "@scui/adapters": path.resolve(__dirname, "../../packages/adapters/src"),
-      "@scui/zod": path.resolve(__dirname, "../../packages/zod/src")
+      "@scui-llm/core": path.resolve(__dirname, "../../packages/core/src"),
+      "@scui-llm/react": path.resolve(__dirname, "../../packages/react/src"),
+      "@scui-llm/adapters": path.resolve(__dirname, "../../packages/adapters/src"),
+      "@scui-llm/zod": path.resolve(__dirname, "../../packages/zod/src")
     }
   },
   build: {

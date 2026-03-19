@@ -1,5 +1,5 @@
-import { createOpenAICompatibleAdapter } from "@scui/adapters";
-import { SCUIProvider, SCUIRender } from "@scui/react";
+import { createOpenAICompatibleAdapter } from "@scui-llm/adapters";
+import { SCUIProvider, SCUIRender } from "@scui-llm/react";
 import { catalog } from "./catalog";
 
 const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;

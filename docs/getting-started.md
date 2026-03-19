@@ -3,14 +3,14 @@
 Install:
 
 ```bash
-bun add @scui/react @scui/core @scui/adapters @scui/zod
+bun add @scui-llm/react @scui-llm/core @scui-llm/adapters @scui-llm/zod
 ```
 
 Define a catalog:
 
 ```ts
 import { z } from "zod";
-import { defineCatalog } from "@scui/zod";
+import { defineCatalog } from "@scui-llm/zod";
 
 function MetricCard(props: { label: string; value: string }) {
   return <div>{props.label}: {props.value}</div>;
@@ -31,8 +31,8 @@ export const catalog = defineCatalog({
 Wire up the provider:
 
 ```tsx
-import { SCUIProvider } from "@scui/react";
-import { createFetchAdapter } from "@scui/adapters";
+import { SCUIProvider } from "@scui-llm/react";
+import { createFetchAdapter } from "@scui-llm/adapters";
 import { catalog } from "./catalog";
 
 const adapter = createFetchAdapter({ url: "/api/scui" });

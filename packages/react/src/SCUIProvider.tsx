@@ -1,6 +1,6 @@
 import React from "react";
-import type { SCUIAdapter } from "@scui/core";
-import type { Catalog } from "@scui/zod";
+import type { SCUIAdapter } from "@scui-llm/core";
+import type { Catalog } from "@scui-llm/zod";
 import { SCUIContext } from "./context";
 
 export type SCUIProviderProps = {

@@ -1,4 +1,4 @@
-# @scui/adapters
+# @scui-llm/adapters
 
 ## 0.0.1
 
@@ -6,4 +6,4 @@
 
 - initialization!
 - Updated dependencies
-  - @scui/core@0.0.1
+  - @scui-llm/core@0.0.1

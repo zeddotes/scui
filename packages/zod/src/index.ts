@@ -5,7 +5,7 @@ export function defineCatalog<T>(catalog: T): T {
 }
 
 export type CatalogEntry = {
-  // React is intentionally not a dependency of @scui/zod.
+  // React is intentionally not a dependency of @scui-llm/zod.
   // The React renderer layer is responsible for interpreting this value as a component.
   component: unknown;
   schema: z.ZodTypeAny;

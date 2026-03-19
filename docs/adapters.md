@@ -5,7 +5,7 @@ Adapters are transport-only. They do not know about React, catalogs, or componen
 ## Fetch adapter
 
 ```ts
-import { createFetchAdapter } from "@scui/adapters";
+import { createFetchAdapter } from "@scui-llm/adapters";
 
 const adapter = createFetchAdapter({
   url: "/api/scui",
@@ -17,7 +17,7 @@ const adapter = createFetchAdapter({
 ## OpenAI-compatible adapter
 
 ```ts
-import { createOpenAICompatibleAdapter } from "@scui/adapters";
+import { createOpenAICompatibleAdapter } from "@scui-llm/adapters";
 
 const adapter = createOpenAICompatibleAdapter({
   baseUrl: "https://api.openai.com",

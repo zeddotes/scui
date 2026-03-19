@@ -1,5 +1,5 @@
 import React from "react";
-import type { SCUIResponse } from "@scui/core";
+import type { SCUIResponse } from "@scui-llm/core";
 
 export type SCUITreeInspectorProps = {
   response: SCUIResponse;

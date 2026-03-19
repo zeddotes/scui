@@ -24,60 +24,60 @@
       },
     },
     "packages/adapters": {
-      "name": "@scui/adapters",
-      "version": "0.0.0",
+      "name": "@scui-llm/adapters",
+      "version": "0.0.1",
       "dependencies": {
-        "@scui/core": "0.0.0",
+        "@scui-llm/core": "0.0.1",
       },
       "peerDependencies": {
-        "@scui/core": "0.0.0",
+        "@scui-llm/core": "0.0.1",
       },
     },
     "packages/core": {
-      "name": "@scui/core",
-      "version": "0.0.0",
+      "name": "@scui-llm/core",
+      "version": "0.0.1",
       "peerDependencies": {
         "zod": "^4.0.0",
       },
     },
     "packages/devtools": {
-      "name": "@scui/devtools",
-      "version": "0.0.0",
+      "name": "@scui-llm/devtools",
+      "version": "0.0.1",
       "dependencies": {
-        "@scui/core": "0.0.0",
+        "@scui-llm/core": "0.0.1",
       },
       "devDependencies": {
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
       },
       "peerDependencies": {
-        "@scui/core": "0.0.0",
+        "@scui-llm/core": "0.0.1",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
       },
     },
     "packages/react": {
-      "name": "@scui/react",
-      "version": "0.0.0",
+      "name": "@scui-llm/react",
+      "version": "0.0.1",
       "dependencies": {
-        "@scui/core": "0.0.0",
-        "@scui/zod": "0.0.0",
+        "@scui-llm/core": "0.0.1",
+        "@scui-llm/zod": "0.0.1",
       },
       "devDependencies": {
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
       },
       "peerDependencies": {
-        "@scui/core": "0.0.0",
-        "@scui/zod": "0.0.0",
+        "@scui-llm/core": "0.0.1",
+        "@scui-llm/zod": "0.0.1",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "zod": "^4.0.0",
       },
     },
     "packages/zod": {
-      "name": "@scui/zod",
-      "version": "0.0.0",
+      "name": "@scui-llm/zod",
+      "version": "0.0.1",
       "peerDependencies": {
         "zod": "^4.0.0",
       },
@@ -306,15 +306,15 @@
 
     "@rollup/rollup-win32-x64-msvc": ["@rollup/rollup-win32-x64-msvc@4.59.0", "", { "os": "win32", "cpu": "x64" }, "sha512-2HRCml6OztYXyJXAvdDXPKcawukWY2GpR5/nxKp4iBgiO3wcoEGkAaqctIbZcNB6KlUQBIqt8VYkNSj2397EfA=="],
 
-    "@scui/adapters": ["@scui/adapters@workspace:packages/adapters"],
+    "@scui-llm/adapters": ["@scui-llm/adapters@workspace:packages/adapters"],
 
-    "@scui/core": ["@scui/core@workspace:packages/core"],
+    "@scui-llm/core": ["@scui-llm/core@workspace:packages/core"],
 
-    "@scui/devtools": ["@scui/devtools@workspace:packages/devtools"],
+    "@scui-llm/devtools": ["@scui-llm/devtools@workspace:packages/devtools"],
 
-    "@scui/react": ["@scui/react@workspace:packages/react"],
+    "@scui-llm/react": ["@scui-llm/react@workspace:packages/react"],
 
-    "@scui/zod": ["@scui/zod@workspace:packages/zod"],
+    "@scui-llm/zod": ["@scui-llm/zod@workspace:packages/zod"],
 
     "@sinclair/typebox": ["@sinclair/typebox@0.27.10", "", {}, "sha512-MTBk/3jGLNB2tVxv6uLlFh1iu64iYOQ2PbdOSK3NW8JZsmlaOh2q6sdtKowBhfw8QFLmYNzTW4/oK4uATIi6ZA=="],
 

@@ -1,9 +1,9 @@
 import React from "react";
-import type { SCUIBlock, SCUIModelRequest, SCUIResponse } from "@scui/core";
+import type { SCUIBlock, SCUIModelRequest, SCUIResponse } from "@scui-llm/core";
 import { useSCUIContext } from "./context";
 import type { SCUIState } from "./types";
 import { renderBlocks } from "./render";
-import { validateBlockProps } from "@scui/zod";
+import { validateBlockProps } from "@scui-llm/zod";
 
 export type UseSCUIBlocksInput = Pick<
   SCUIModelRequest,

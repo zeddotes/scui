@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { createFetchAdapter } from "./fetch";
 
-describe("@scui/adapters", () => {
+describe("@scui-llm/adapters", () => {
   it("createFetchAdapter returns adapter", async () => {
     const adapter = createFetchAdapter({
       url: "https://example.invalid",

@@ -11,9 +11,9 @@ This repository is built using an agent-first architecture.
 
 ## Packages
 
-- @scui/core → runtime + contracts
-- @scui/react → rendering layer
-- @scui/adapters → model integrations
+- @scui-llm/core → runtime + contracts
+- @scui-llm/react → rendering layer
+- @scui-llm/adapters → model integrations
 
 ## Rules
 

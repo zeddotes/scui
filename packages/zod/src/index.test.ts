@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { z } from "zod";
 import { defineCatalog, validateCatalog, validateBlockProps } from "./index";
 
-describe("@scui/zod", () => {
+describe("@scui-llm/zod", () => {
   it("defineCatalog preserves object shape", () => {
     const catalog = defineCatalog({
       MetricCard: {

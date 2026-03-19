@@ -1,4 +1,4 @@
-# @scui/zod
+# @scui-llm/zod
 
 ## 0.0.1
 

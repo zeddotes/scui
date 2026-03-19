@@ -1,4 +1,4 @@
-# @scui/react
+# @scui-llm/react
 
 ## 0.0.1
 
@@ -6,5 +6,5 @@
 
 - initialization!
 - Updated dependencies
-  - @scui/core@0.0.1
-  - @scui/zod@0.0.1
+  - @scui-llm/core@0.0.1
+  - @scui-llm/zod@0.0.1

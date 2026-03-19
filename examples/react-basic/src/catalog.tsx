@@ -1,4 +1,4 @@
-import { defineCatalog } from "@scui/zod";
+import { defineCatalog } from "@scui-llm/zod";
 import { z } from "zod";
 
 function MetricCard(props: { label: string; value: number }) {

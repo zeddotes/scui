@@ -5,7 +5,7 @@ The catalog is the only place that maps model output (`component`) to real rende
 ## Define a catalog
 
 ```ts
-import { defineCatalog } from "@scui/zod";
+import { defineCatalog } from "@scui-llm/zod";
 import { z } from "zod";
 
 export const catalog = defineCatalog({
@@ -27,5 +27,5 @@ export const catalog = defineCatalog({
 
 ## Design note
 
-`@scui/zod` intentionally does not depend on React. The React layer is responsible for interpreting `component` as a React component.
+`@scui-llm/zod` intentionally does not depend on React. The React layer is responsible for interpreting `component` as a React component.
 

@@ -13,18 +13,18 @@ SCUI is a small runtime for turning model output into UI **without allowing the 
 
 ## Packages
 
-- **`@scui/core`**: contracts + adapter interface + basic execution helpers
-- **`@scui/react`**: React renderer package — components and hooks (`SCUIProvider`, `SCUIRender`, `useSCUIBlocks`, etc.)
-- **`@scui/adapters`**: transport-only adapters (`fetch`, OpenAI-compatible)
-- **`@scui/zod`**: catalog helpers and Zod validation utilities (no React dependency)
-- **`@scui/devtools`**: optional inspectors/replay helpers
+- **`@scui-llm/core`**: contracts + adapter interface + basic execution helpers
+- **`@scui-llm/react`**: React renderer package — components and hooks (`SCUIProvider`, `SCUIRender`, `useSCUIBlocks`, etc.)
+- **`@scui-llm/adapters`**: transport-only adapters (`fetch`, OpenAI-compatible)
+- **`@scui-llm/zod`**: catalog helpers and Zod validation utilities (no React dependency)
+- **`@scui-llm/devtools`**: optional inspectors/replay helpers
 
 SCUI ships a React rendering layer today; PRs for additional framework renderers (Vue/Svelte/Solid/etc.) are welcome.
 
 ## Installation (consumer)
 
 ```bash
-bun add @scui/react @scui/core @scui/adapters @scui/zod
+bun add @scui-llm/react @scui-llm/core @scui-llm/adapters @scui-llm/zod
 ```
 
 ## Quick start (React)
@@ -33,7 +33,7 @@ Define a catalog:
 
 ```ts
 import { z } from "zod";
-import { defineCatalog } from "@scui/zod";
+import { defineCatalog } from "@scui-llm/zod";
 
 function MetricCard(props: { label: string; value: number }) {
   return (
@@ -59,8 +59,8 @@ export const catalog = defineCatalog({
 Wire it up:
 
 ```tsx
-import { SCUIProvider, SCUIRender } from "@scui/react";
-import { createFetchAdapter } from "@scui/adapters";
+import { SCUIProvider, SCUIRender } from "@scui-llm/react";
+import { createFetchAdapter } from "@scui-llm/adapters";
 import { catalog } from "./catalog";
 
 const adapter = createFetchAdapter({ url: "/api/scui" });
@@ -165,6 +165,7 @@ Docs live in `docs/`. A runnable example lives in `examples/react-basic/`.
 This repo is set up for Changesets.
 
 ```bash
+nvm use
 bun run build
 bunx changeset version
 bunx changeset publish

@@ -1,6 +1,6 @@
 import React from "react";
-import type { SCUIBlock } from "@scui/core";
-import type { Catalog } from "@scui/zod";
+import type { SCUIBlock } from "@scui-llm/core";
+import type { Catalog } from "@scui-llm/zod";
 
 export type RenderOptions = {
   debug?: boolean;

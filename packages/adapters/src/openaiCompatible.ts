@@ -1,4 +1,4 @@
-import type { SCUIAdapter, SCUIModelRequest, SCUIModelResponse, SCUIResponse } from "@scui/core";
+import type { SCUIAdapter, SCUIModelRequest, SCUIModelResponse, SCUIResponse } from "@scui-llm/core";
 import type { FetchLike, ResponseMapper } from "./types";
 
 export type CreateOpenAICompatibleAdapterOptions<T = SCUIResponse> = {
