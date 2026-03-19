@@ -14,9 +14,11 @@ SCUI is a small runtime for turning model output into UI **without allowing the 
 ## Packages
 
 - **`@scui-llm/core`**: contracts + adapter interface + basic execution helpers
-- **`@scui-llm/react`**: React renderer package — components and hooks (`SCUIProvider`, `SCUIRender`, `useSCUIBlocks`, etc.)
 - **`@scui-llm/adapters`**: transport-only adapters (`fetch`, OpenAI-compatible)
-- **`@scui-llm/zod`**: catalog helpers and Zod validation utilities (no React dependency)
+- **`@scui-llm/zod`**: catalog helpers and Zod validation utilities
+
+### Framework/Library helpers
+- **`@scui-llm/react`**: React renderer package — components and hooks (`SCUIProvider`, `SCUIRender`, `useSCUIBlocks`, etc.)
 
 SCUI ships a React rendering layer today; PRs for additional framework renderers (Vue/Svelte/Solid/etc.) are welcome.
 
