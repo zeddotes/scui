@@ -38,3 +38,7 @@ const adapter = createOpenAICompatibleAdapter({
 - The OpenAI-compatible adapter targets the OpenAI Responses API (`/v1/responses`) by default.
 - Your model must return JSON matching `{"blocks":[{"component":string,"props":object}]}`. If props don’t match the catalog schema, the block is skipped by the renderer.
 
+## Catalog schema enforcement
+
+The catalog entry’s Zod schema is the source of truth. Rendering validates `block.props` against the entry schema; invalid blocks are skipped.
+

@@ -27,7 +27,6 @@ describe("executeSCUIRequest", () => {
     const result = await executeSCUIRequest(
       {
         prompt: "Show metrics",
-        schema: {},
         catalog: [],
       },
       { adapter },
@@ -48,7 +47,6 @@ describe("executeSCUIRequest", () => {
       executeSCUIRequest(
         {
           prompt: "Show metrics",
-          schema: {},
           catalog: [],
         },
         { adapter },

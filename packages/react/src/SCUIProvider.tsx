@@ -6,11 +6,12 @@ import { SCUIContext } from "./context";
 export type SCUIProviderProps = {
   adapter: SCUIAdapter;
   catalog: Catalog;
+  debug?: boolean;
   children: React.ReactNode;
 };
 
-export function SCUIProvider({ adapter, catalog, children }: SCUIProviderProps) {
-  const value = React.useMemo(() => ({ adapter, catalog }), [adapter, catalog]);
+export function SCUIProvider({ adapter, catalog, debug, children }: SCUIProviderProps) {
+  const value = React.useMemo(() => ({ adapter, catalog, debug }), [adapter, catalog, debug]);
   return <SCUIContext.Provider value={value}>{children}</SCUIContext.Provider>;
 }
 

@@ -8,6 +8,14 @@ SCUI renders a flat list of validated blocks.
 - If props fail schema validation: it is skipped.
 - Otherwise the catalog component is rendered with parsed props.
 
+## Skipped UI (React)
+
+If the request succeeds but all returned blocks are ineligible (unknown component or props validation failure), `SCUIRender` can render a `skipped` fallback (default `null`).
+
+## Enforcement source of truth
+
+The enforcement mechanism is the catalog entry’s Zod schema.
+
 ## Loading state
 
 The React layer exposes a simple state machine:

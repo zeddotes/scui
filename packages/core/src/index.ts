@@ -10,7 +10,6 @@ export type SCUIResponse = {
 export type SCUIModelRequest = {
   prompt: string;
   systemPrompt?: string;
-  schema: unknown;
   catalog: {
     name: string;
     description?: string;

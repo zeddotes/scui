@@ -20,18 +20,99 @@ function getNestedString(obj: unknown, path: string[]): string | null {
 }
 
 function extractFirstJsonObject(text: string): unknown | null {
-  const start = text.indexOf("{");
-  if (start === -1) return null;
-  for (let end = text.length - 1; end > start; end--) {
-    if (text[end] !== "}") continue;
-    const slice = text.slice(start, end + 1);
-    try {
-      return JSON.parse(slice);
-    } catch {
-      // keep scanning
+  const stripped = stripCodeFences(text).trim();
+  const direct = tryParseJson(stripped);
+  if (direct !== null) return direct;
+  const balanced = extractBalancedJsonObject(stripped);
+  return balanced ? tryParseJson(balanced) : null;
+}
+
+function stripCodeFences(text: string): string {
+  const trimmed = text.trim();
+  const fenceStart = trimmed.indexOf("```");
+  if (fenceStart !== 0) return text;
+  const fenceEnd = trimmed.lastIndexOf("```");
+  if (fenceEnd <= 0 || fenceEnd === fenceStart) return text;
+  const inner = trimmed.slice(3, fenceEnd);
+  // allow ```json\n...\n```
+  const firstNewline = inner.indexOf("\n");
+  if (firstNewline === -1) return inner;
+  const maybeLang = inner.slice(0, firstNewline).trim().toLowerCase();
+  if (maybeLang === "json" || maybeLang === "javascript" || maybeLang === "js") {
+    return inner.slice(firstNewline + 1);
+  }
+  return inner;
+}
+
+function tryParseJson(text: string): unknown | null {
+  try {
+    return JSON.parse(text);
+  } catch {
+    return null;
+  }
+}
+
+function extractBalancedJsonObject(text: string): string | null {
+  let start = -1;
+  let depth = 0;
+  let inString = false;
+  let escape = false;
+
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+
+    if (inString) {
+      if (escape) {
+        escape = false;
+      } else if (ch === "\\") {
+        escape = true;
+      } else if (ch === "\"") {
+        inString = false;
+      }
+      continue;
+    }
+
+    if (ch === "\"") {
+      inString = true;
+      continue;
+    }
+
+    if (ch === "{") {
+      if (depth === 0) start = i;
+      depth++;
+      continue;
+    }
+
+    if (ch === "}") {
+      if (depth === 0) continue;
+      depth--;
+      if (depth === 0 && start !== -1) {
+        return text.slice(start, i + 1);
+      }
     }
   }
+
   return null;
+}
+
+function extractTextFromOpenAIResponse(rawJson: unknown): string {
+  if (!rawJson || typeof rawJson !== "object") return "";
+  const obj = rawJson as Record<string, unknown>;
+
+  // Common convenience field
+  if (typeof obj.output_text === "string") return obj.output_text;
+
+  // Responses API shape: output[0].content[0].text
+  const output0 = Array.isArray(obj.output) ? obj.output[0] : undefined;
+  const output0Text = getNestedString(output0, ["content", "0", "text"]);
+  if (output0Text) return output0Text;
+
+  // Chat Completions shape: choices[0].message.content
+  const choices0 = Array.isArray(obj.choices) ? obj.choices[0] : undefined;
+  const choices0Text = getNestedString(choices0, ["message", "content"]);
+  if (choices0Text) return choices0Text;
+
+  return "";
 }
 
 export function createOpenAICompatibleAdapter<T = SCUIResponse>({
@@ -52,7 +133,6 @@ export function createOpenAICompatibleAdapter<T = SCUIResponse>({
         : "System:\nReturn JSON only.\n";
       const user = `User:\n${input.prompt}\n`;
 
-      const schemaHint = input.schema ? `Schema:\n${JSON.stringify(input.schema)}\n` : "";
       const catalogHint =
         input.catalog?.length
           ? `Catalog:\n${JSON.stringify(
@@ -69,7 +149,7 @@ export function createOpenAICompatibleAdapter<T = SCUIResponse>({
       const body = {
         model,
         input: [
-          { role: "system", content: `${system}${schemaHint}${catalogHint}${instruction}` },
+          { role: "system", content: `${system}${catalogHint}${instruction}` },
           { role: "user", content: user },
         ],
         temperature: 0,
@@ -91,30 +171,9 @@ export function createOpenAICompatibleAdapter<T = SCUIResponse>({
       const rawJson = await res.json().catch(() => null);
       if (mapResponse) return (await mapResponse(res, rawJson)) as unknown as SCUIModelResponse<U>;
 
-      const choices0 =
-        rawJson && typeof rawJson === "object"
-          ? ((rawJson as Record<string, unknown>).choices as unknown[] | undefined)?.[0]
-          : undefined;
-
-          console.log(choices0)
-      const output0 =
-        rawJson && typeof rawJson === "object"
-          ? ((rawJson as Record<string, unknown>).output as unknown[] | undefined)?.[0]
-          : undefined;
-
-          console.log(output0)
-
-      const content =
-        getNestedString(choices0, ["message", "content"]) ??
-        getNestedString(output0, ["content", "0", "text"]) ??
-        "";
-
-          console.log(content)
-
+      const content = extractTextFromOpenAIResponse(rawJson);
       const extracted = typeof content === "string" ? extractFirstJsonObject(content) : null;
       const data = (extracted ?? rawJson) as U;
-
-          console.log({ data, raw: rawJson })
 
       return { data, raw: rawJson };
     },

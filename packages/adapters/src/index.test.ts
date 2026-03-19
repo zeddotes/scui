@@ -14,7 +14,6 @@ describe("@scui/adapters", () => {
 
     const out = await adapter.generate({
       prompt: "x",
-      schema: {},
       catalog: [],
     });
 

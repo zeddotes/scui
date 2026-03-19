@@ -14,10 +14,12 @@ SCUI is a small runtime for turning model output into UI **without allowing the 
 ## Packages
 
 - **`@scui/core`**: contracts + adapter interface + basic execution helpers
-- **`@scui/react`**: `SCUIProvider`, hooks, and renderer (`SCUIRender`)
+- **`@scui/react`**: React renderer package — components and hooks (`SCUIProvider`, `SCUIRender`, `useSCUIBlocks`, etc.)
 - **`@scui/adapters`**: transport-only adapters (`fetch`, OpenAI-compatible)
 - **`@scui/zod`**: catalog helpers and Zod validation utilities (no React dependency)
 - **`@scui/devtools`**: optional inspectors/replay helpers
+
+SCUI ships a React rendering layer today; PRs for additional framework renderers (Vue/Svelte/Solid/etc.) are welcome.
 
 ## Installation (consumer)
 
@@ -69,9 +71,9 @@ export function App() {
     <SCUIProvider adapter={adapter} catalog={catalog}>
       <SCUIRender
         prompt="Show active users metric"
-        fallback={<div>Loading…</div>}
         loading={({ status }) => <div>Loading ({status})…</div>}
         error={(err) => <div>SCUI failed: {err.message}</div>}
+        skipped={() => <div>No eligible blocks to render.</div>}
       />
     </SCUIProvider>
   );
@@ -109,6 +111,12 @@ The catalog is the only mapping from model output to renderable UI. If a block c
 - Unknown `component` → skipped
 - Schema validation failure → skipped
 - Valid entry + valid props → rendered
+
+### Debug mode (React)
+
+In React, you can enable debug logging to see state transitions and why blocks were skipped:
+
+- Pass `debug` to `SCUIProvider` to log `SCUIState` transitions, adapter results, and block skip reasons.
 
 ## Adapters
 
@@ -164,6 +172,7 @@ bunx changeset publish
 ## Contributing
 
 Issues and pull requests are welcome.
+Framework renderers beyond React are explicitly in-scope.
 
 ### Reporting issues
 

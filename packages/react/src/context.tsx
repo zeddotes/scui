@@ -5,6 +5,7 @@ import type { Catalog } from "@scui/zod";
 export type SCUIContextValue = {
   adapter: SCUIAdapter;
   catalog: Catalog;
+  debug?: boolean;
 };
 
 export const SCUIContext = React.createContext<SCUIContextValue | null>(null);

@@ -16,7 +16,7 @@ const adapter = createOpenAICompatibleAdapter({
 
 export function App() {
   return (
-    <SCUIProvider adapter={adapter} catalog={catalog}>
+    <SCUIProvider adapter={adapter} catalog={catalog} debug>
       <div
         style={{
           display: "flex",
@@ -29,8 +29,8 @@ export function App() {
         <SCUIRender
           error={(err) => <div>SCUI failed: {err.message}</div>}
           prompt="Show active users metric, use a dummy value of 123"
-          fallback={<div>Loading…</div>}
           loading={({ status }) => <div>Loading ({status})…</div>}
+          skipped={() => <div>No eligible blocks to render.</div>}
         />
       </div>
     </SCUIProvider>
